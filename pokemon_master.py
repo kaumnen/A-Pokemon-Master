@@ -75,40 +75,6 @@ class Pokemon:
     print("{} leveled up to {} level! Max health now is {}. Health fully regenerated.\n".format(self.name, self.level, self.max_health))
  
 
-
-class Trainer:
-  def __init__(self, name, pokemons, potions, current_pokemon):
-    self.name = name
-    self.pokemons = pokemons
-    self.potions = potions
-    self.current_pokemon = current_pokemon
-  
-  def __repr__(self):
-    return "Trainer info. {name}, has pokemons: {pokemons}, has {potions} potions, current pokemon is {current_pokemon}.".format(name = self.name, pokemons = self.pokemons, potions = self.potions, current_pokemon = self.current_pokemon)
-  
-  def use_potion(self):
-    if self.potions > 0:
-      if self.current_pokemon.health < self.current_pokemon.max_health:
-        self.current_pokemon.gain_health(1)
-        self.potions -= 1
-        print("{} has {} potions left.\n".format(self.name, self.potions))
-      else:
-        print("{} failed to use a potion on {}. Your pokemon has maximum health.\n".format(self.name, self.current_pokemon.name))
-    else:
-      print("{}, you have no potions!\n".format(self.name))
-  
-  def attack(self, other, dmg):
-    self.current_pokemon.attack(other.current_pokemon, dmg)
-  
-  def switch_pokemon(self, pokemon):
-    if pokemon.is_knocked_out == True:
-      print("You can't switch to a knocked out pokemon!")
-    elif pokemon in self.pokemons:
-      self.current_pokemon = pokemon
-      print("{} switched a pokemon. {}'s current pokemon now is {}.\n".format(self.name, self.name, self.current_pokemon.name))
-
-
-
 class Charmander(Pokemon):
   def __init__(self, name, level, typ, is_knocked_out):
     super().__init__(name, level, typ, is_knocked_out)
@@ -123,9 +89,6 @@ pikachu = Pokemon("Pikachu", 3, "Fire", False)
 bulbasaur = Pokemon("Bulbasaur", 3, "Grass", False)
 squirtle = Pokemon("Squirtle", 3, "Water", False)
 charmander = Charmander("Charmander", 3, "Fire", False)
-
-erika = Trainer('Erika', [pikachu], 2, pikachu)
-ramos = Trainer('Ramos', [bulbasaur, squirtle], 2, bulbasaur)
 
 print(pikachu)
 print(bulbasaur)
