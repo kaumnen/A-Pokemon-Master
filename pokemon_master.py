@@ -9,7 +9,7 @@ class Pokemon:
     self.health = self.max_health
   
   def __repr__(self):
-    return "Pokemon info. {}, current level: {}, typ: {}, maximun health: {}, current health: {}.\n".format(self.name, self.level, self.typ, self.max_health, self.health)
+    return "Pokemon info. {}, current level: {}, typ: {}, maximum health: {}, current health: {}.\n".format(self.name, self.level, self.typ, self.max_health, self.health)
   
   def lose_health(self, dmg):
     self.health -= dmg
