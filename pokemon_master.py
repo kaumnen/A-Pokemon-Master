@@ -1,15 +1,15 @@
 class Pokemon:
-  def __init__(self, name, level, type, is_knocked_out):
+  def __init__(self, name, level, typ, is_knocked_out):
     self.name = name
     self.level = level
-    self.type = type
+    self.typ = typ
     self.is_knocked_out = is_knocked_out
     self.exp = 0
     self.max_health = level
     self.health = self.max_health
   
   def __repr__(self):
-    return "Pokemon info. {}, current level: {}, type: {}, maximun health: {}, current health: {}.\n".format(self.name, self.level, self.type, self.max_health, self.health)
+    return "Pokemon info. {}, current level: {}, typ: {}, maximun health: {}, current health: {}.\n".format(self.name, self.level, self.typ, self.max_health, self.health)
   
   def lose_health(self, dmg):
     self.health -= dmg
@@ -41,20 +41,20 @@ class Pokemon:
     if self.is_knocked_out == True:
       print("You can not attack. {pokemon} is knocked out!".format(pokemon = self.name))
       return
-    if self.type == 'Water':
-      if other.type == 'Fire':
+    if self.typ == 'Water':
+      if other.typ == 'Fire':
         dmg *= 2
-      elif other.type == 'Grass':
+      elif other.typ == 'Grass':
         dmg /= 2
-    elif self.type == 'Fire':
-      if other.type == 'Grass':
+    elif self.typ == 'Fire':
+      if other.typ == 'Grass':
         dmg *= 2
-      elif other.type == 'Water':
+      elif other.typ == 'Water':
         dmg /= 2
-    elif self.type == 'Grass':
-      if other.type == 'Water':
+    elif self.typ == 'Grass':
+      if other.typ == 'Water':
         dmg *= 2
-      elif other.type == 'Fire':
+      elif other.typ == 'Fire':
         dmg /= 2
     other.lose_health(dmg)
     print("{} attacked {}".format(self.name, other.name))
@@ -72,7 +72,7 @@ class Pokemon:
     self.level += 1
     self.max_health += 1
     self.health = self.max_health
-    print("{} leveled up to level {}! Max health now is {}. Health fully regenerated.\n".format(self.name, self.level, self.max_health))
+    print("{} leveled up to {} level! Max health now is {}. Health fully regenerated.\n".format(self.name, self.level, self.max_health))
  
 
 
@@ -110,15 +110,15 @@ class Trainer:
 
 
 class Charmander(Pokemon):
-  def __init__(self, name, level, type, is_knocked_out):
-    super().__init__(name, level, type, is_knocked_out)
+  def __init__(self, name, level, typ, is_knocked_out):
+    super().__init__(name, level, typ, is_knocked_out)
   
   def destroy(self, other):
     other.lose_health(other.health)
     print("{} totally destroyed {}!".format(self.name, other.name))
 
 
-# The game
+# Testing
 pikachu = Pokemon("Pikachu", 3, "Fire", False)
 bulbasaur = Pokemon("Bulbasaur", 3, "Grass", False)
 squirtle = Pokemon("Squirtle", 3, "Water", False)
